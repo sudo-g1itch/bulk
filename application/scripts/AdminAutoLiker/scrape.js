@@ -21,16 +21,18 @@ $(()=>{
     var job = JSON.stringify(jobArray);
     var place = JSON.stringify(placeArray);
     var name = JSON.stringify(nameArray);
-
+    var data:{    
+            name: name,
+            job : job,
+            place : place
+            }
 
     $.ajax({
         type: "POST",
         url: "https://loopo.onblick.com/api/bulk-profile/test-campaign",
         dataType: "JSON",
         data: {
-            name: name,
-            job : job,
-            place : place
+            data:data
         },
     });
 
