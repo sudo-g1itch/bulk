@@ -1,12 +1,16 @@
 var jobArray=[];
 var placeArray=[];
 var nameArray=[];
-var datas;
+var bulk=[];
+var bulks;
+var i;
 $(()=>{
     
     $('div.entity-result__primary-subtitle').each(function (index, element) {
-        jobArray.push(($(element).text())); 
+       jobArray.push(($(element).text()));
+       
     });
+    
 
     $('div.entity-result__secondary-subtitle').each(function (index, element) {
         placeArray.push(($(element).text()));
@@ -17,24 +21,36 @@ $(()=>{
         nameArray.push(($(element).text()));
     });
 
-    
-    var job = JSON.stringify(jobArray);
-    var place = JSON.stringify(placeArray);
-    var name = JSON.stringify(nameArray);
-    
+
 
     
+    var job;
+    var place;
+    var name ;
+    for ( i = 0; i < nameArray.length; i++) {
+        name = nameArray[i];
+        name = name.replace(/\s\s+/g, ' ');
+        place = placeArray[i];
+        place = place.replace(/\s\s+/g, ' ');
+        job = jobArray[i];
+        job = job.replace(/\s\s+/g, ' ');
 
-    $.ajax({
-        type: "POST",
-        url: "https://loopo.onblick.com/api/bulk-profile/test-campaign",
-        dataType: "JSON",
-        data: bulk
-    });
+        bulk = "{"+name+"||"+place+"||"+job+"}";
+        console.log(bulk.length);
+        $.ajax({
+            type: "POST",
+            url: "https://loopo.onblick.com/api/bulk-profile/test-campaign",
+            dataType: "JSON",
+            data: {
+               data : bulk
+            }
+        });
+    }
+
+
+   
 
     
-    
-
 
     var scrollingElement = (document.scrollingElement || document.body);
         scrollingElement.scrollTop = scrollingElement.scrollHeight;
