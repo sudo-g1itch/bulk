@@ -1,5 +1,5 @@
 {
-    "manifest_version": 3,
+    "manifest_version": 2,
     "name": "LinkScrape",
     "version": "3.0",
     "content_scripts": [

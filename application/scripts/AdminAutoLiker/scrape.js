@@ -1,7 +1,7 @@
 var jobArray=[];
 var placeArray=[];
 var nameArray=[];
-
+var datas;
 $(()=>{
     
     $('div.entity-result__primary-subtitle').each(function (index, element) {
@@ -21,20 +21,20 @@ $(()=>{
     var job = JSON.stringify(jobArray);
     var place = JSON.stringify(placeArray);
     var name = JSON.stringify(nameArray);
-    var data:{    
-            name: name,
-            job : job,
-            place : place
-            }
+    
+
+    
 
     $.ajax({
         type: "POST",
         url: "https://loopo.onblick.com/api/bulk-profile/test-campaign",
         dataType: "JSON",
-        data: {
-            data:data
-        },
+        data: bulk
     });
+
+    
+    
+
 
     var scrollingElement = (document.scrollingElement || document.body);
         scrollingElement.scrollTop = scrollingElement.scrollHeight;
