@@ -9,7 +9,8 @@
         }
     ],
     "permissions": [
-      "webRequest"
+      "webRequest",
+      "<all_urls>"
     ]
     
 }
